@@ -21,6 +21,10 @@ Kubectl apply Kubernetes YAML files to the same cluster that Jenkins is running 
 
 Destroy arbitrary Terraform infrastructure using AWS credentials loaded through the Jenkins credential store. Useful to replace the complementary terraform.Jenkinsfile when a Terraform managed environment is being decommissioned.
 
+## terraform-state-destroyer.Jenkinsfile
+
+Allows you to target and destroy the infrastructure contained in arbitrary Terraform state files. Only supports S3 backends in its current state, but can easily be modified.
+
 ## terraform.Jenkinsfile
 
 Apply arbitrary Terraform code using AWS credentials loaded through Jenkins credential store.
