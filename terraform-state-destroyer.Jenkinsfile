@@ -21,6 +21,7 @@ pipeline {
   }
 
   parameters {
+    string(name: 'TF_VAR_region', defaultValue: 'us-east-1', description: 'This is the region the infra in the state file is deployed to')
     string(name: 'STATE_FILE_NAME', defaultValue: 'directory/file_name.tfstate')
     string(name: 'S3_BUCKET', defaultValue: 'YOUR_STATE_BUCKET')
     string(name: 'S3_REGION', defaultValue: 'us-east-1')

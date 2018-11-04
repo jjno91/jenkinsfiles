@@ -25,6 +25,8 @@ Destroy arbitrary Terraform infrastructure using AWS credentials loaded through 
 
 Allows you to target and destroy the infrastructure contained in arbitrary Terraform state files. Only supports S3 backends in its current state, but can easily be modified.
 
+In order for this Jenkinsfile to work properly you will still need to define a provider and backend in Terraform code before executing.
+
 ## terraform.Jenkinsfile
 
 Apply arbitrary Terraform code using AWS credentials loaded through Jenkins credential store.
