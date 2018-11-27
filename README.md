@@ -5,7 +5,7 @@ Catalog of useful Jenkinsfiles
 The Jenkinsfiles in this repository use a Kubernetes cluster as the build agent, but the agent can be reconfigured to another target without affecting most other features.
 
 ## Usage
-These Jenkinsfiles are designed to be usable as-is. In most cases all you need to do is copy the to your repository and remove the dot prefix leaving the name `Jenkinsfile` and Jenkins pipeline based jobs will automatically pick up the file as your job configuration.
+These Jenkinsfiles are designed to be usable as-is. In most cases all you need to do is copy the desired Jenkinsfile to your repository and remove the dot prefix leaving the name `Jenkinsfile` and Jenkins pipeline based jobs will automatically pick up the file as your job configuration.
 
 https://jenkins.io/doc/book/pipeline/
 
