@@ -12,7 +12,12 @@ pipeline {
   }
 
   stages {
-    stage('Build') {
+    stage('Code Build') {
+      steps {
+        powershell 'msbuild'
+      }
+    }
+    stage('Docker Build') {
       steps {
         powershell 'docker build -t ${env:REGISTRY}:latest .'
       }
