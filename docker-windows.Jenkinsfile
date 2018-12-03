@@ -33,5 +33,11 @@ pipeline {
         powershell 'docker push ${env:REGISTRY}:$(git rev-parse --short HEAD)'
       }
     }
+    stage('Image Cleanup') {
+      steps {
+        powershell 'docker rmi ${env:REGISTRY}:latest'
+        powershell 'docker rmi ${env:REGISTRY}:$(git rev-parse --short HEAD)'
+      }
+    }
   }
 }
