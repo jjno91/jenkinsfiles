@@ -25,6 +25,7 @@ pipeline {
     stage('Tag') {
       steps {
         powershell 'docker tag ${env:REGISTRY}:latest ${env:REGISTRY}:$(git rev-parse --short HEAD)'
+        powershell 'echo "New Image: $(git rev-parse --short HEAD)'
       }
     }
     stage('Push') {
