@@ -24,6 +24,10 @@ Kubectl apply Kubernetes YAML files to the same cluster that Jenkins is running 
 
 Execute arbitrary SQL scripts on any MySQL compatible database, enabling Jenkins to function as a centralized database management system
 
+## mysqldump.Jenkinsfile
+
+Export the schema of a MySQL compatible database
+
 ## ssl-certgen.Jenkinsfile
 
 Generate and archive self-signed SSL certs and keys
