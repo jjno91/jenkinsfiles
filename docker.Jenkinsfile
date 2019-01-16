@@ -11,7 +11,7 @@ spec:
     runAsUser: 0
     fsGroup: 0
   containers:
-  - name: docker
+  - name: this
     image: docker:stable-git
     command:
     - cat
@@ -38,21 +38,21 @@ spec:
   stages {
     stage('Build') {
       steps {
-        container('docker') {
+        container('this') {
           sh 'docker build -t $REGISTRY:latest .'
         }
       }
     }
     stage('Tag') {
       steps {
-        container('docker') {
+        container('this') {
           sh 'docker tag $REGISTRY:latest $REGISTRY:$(git rev-parse --short HEAD)'
         }
       }
     }
     stage('Push') {
       steps {
-        container('docker') {
+        container('this') {
           sh 'docker push $REGISTRY:latest'
           sh 'docker push $REGISTRY:$(git rev-parse --short HEAD)'
         }

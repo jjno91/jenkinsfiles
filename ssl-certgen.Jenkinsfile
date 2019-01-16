@@ -3,7 +3,7 @@ pipeline {
     kubernetes {
       label UUID.randomUUID().toString()
       containerTemplate {
-        name 'openssl'
+        name 'this'
         image 'frapsoft/openssl'
         ttyEnabled true
         command 'cat'
@@ -18,7 +18,7 @@ pipeline {
   stages {
     stage('Generate Cert') {
       steps {
-        container('openssl') {
+        container('this') {
           sh '''
             openssl req \
               -new \

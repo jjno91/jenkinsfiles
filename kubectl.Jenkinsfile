@@ -4,7 +4,7 @@ pipeline {
       label UUID.randomUUID().toString()
       serviceAccount 'jenkins'
       containerTemplate {
-        name 'kubectl'
+        name 'this'
         image 'roffe/kubectl:latest'
         ttyEnabled true
         command 'cat'
@@ -19,7 +19,7 @@ pipeline {
   stages {
     stage('Kubectl Dry-Run') {
       steps {
-        container('kubectl') {
+        container('this') {
           sh 'kubectl apply --dry-run=true -f kubernetes'
         }
       }
@@ -29,7 +29,7 @@ pipeline {
         expression { env.BRANCH_NAME == 'master' }
       }
       steps {
-        container('kubectl') {
+        container('this') {
           timeout(time: 5, unit: 'MINUTES') {
             input message: 'Continuing may change or destroy existing infrastructure, be sure to review the dry-run stage before continuing'
           }

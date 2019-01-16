@@ -3,7 +3,7 @@ pipeline {
     kubernetes {
       label UUID.randomUUID().toString()
       containerTemplate {
-        name 'terraform'
+        name 'this'
         image 'hashicorp/terraform:latest'
         ttyEnabled true
         command 'cat'
@@ -23,14 +23,14 @@ pipeline {
   stages {
     stage('Initialize') {
       steps {
-        container('terraform') {
+        container('this') {
           sh 'terraform init'
         }
       }
     }
     stage('Plan') {
       steps {
-        container('terraform') {
+        container('this') {
           sh 'terraform plan -destroy'
         }
       }
@@ -40,7 +40,7 @@ pipeline {
         expression { env.BRANCH_NAME == 'master' }
       }
       steps {
-        container('terraform') {
+        container('this') {
           timeout(time: 5, unit: 'MINUTES') {
             input message: 'Continuing will destroy all existing infrastructure in this environment'
           }
