@@ -20,6 +20,10 @@ Docker build, tag, and push with tagging based off of git commit ID.
 
 Kubectl apply Kubernetes YAML files to the same cluster that Jenkins is running in. Requires a pre-existing `jenkins` service account on the target cluster and by default looks for Kubernetes YAMLs in a directory named `kubernetes`.
 
+## ssl-certgen.Jenkinsfile
+
+Generate and archive self-signed SSL certs and keys
+
 ## terraform-disabled.Jenkinsfile
 
 Destroy arbitrary Terraform infrastructure using AWS credentials loaded through the Jenkins credential store. Useful to replace the complementary terraform.Jenkinsfile when a Terraform managed environment is being decommissioned.
