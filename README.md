@@ -20,6 +20,10 @@ Docker build, tag, and push with tagging based off of git commit ID.
 
 Kubectl apply Kubernetes YAML files to the same cluster that Jenkins is running in. Requires a pre-existing `jenkins` service account on the target cluster and by default looks for Kubernetes YAMLs in a directory named `kubernetes`.
 
+## mysql.Jenkinsfile
+
+Execute arbitrary SQL scripts on any MySQL compatible database, enabling Jenkins to function as a centralized database management system
+
 ## ssl-certgen.Jenkinsfile
 
 Generate and archive self-signed SSL certs and keys
