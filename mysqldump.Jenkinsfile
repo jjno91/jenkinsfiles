@@ -23,7 +23,7 @@ pipeline {
   }
 
   stages {
-    stage('Dump Schema') {
+    stage('this') {
       steps {
         container('this') {
           sh '''

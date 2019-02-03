@@ -28,7 +28,7 @@ pipeline {
   }
 
   stages {
-    stage('Execute SQL Script') {
+    stage('this') {
       steps {
         container('this') {
           sh 'mysql -h ${TARGET_HOST} -u ${USER} --password=${PASSWORD} < some-script.sql'
