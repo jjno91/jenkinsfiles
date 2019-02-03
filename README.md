@@ -12,13 +12,21 @@ These Jenkinsfiles are designed to be usable as-is. In most cases all you need t
 
 <https://jenkins.io/doc/book/pipeline/>
 
+## docker-windows.Jenkinsfile
+
+Docker build, tag, and push with tagging based off of git commit ID through Powershell
+
 ## docker.Jenkinsfile
 
-Docker build, tag, and push with tagging based off of git commit ID.
+Docker build, tag, and push with tagging based off of git commit ID
+
+## eks.Jenkinsfile
+
+Execute arbitrary commands against an EKS cluster using IAM authentication
 
 ## kubectl.Jenkinsfile
 
-Kubectl apply Kubernetes YAML files to the same cluster that Jenkins is running in. Requires a pre-existing `jenkins` service account on the target cluster and by default looks for Kubernetes YAMLs in a directory named `kubernetes`.
+Kubectl apply Kubernetes YAML files to the same cluster that Jenkins is running in -- requires a pre-existing `jenkins` service account on the target cluster and by default looks for Kubernetes YAMLs in a directory named `kubernetes`
 
 ## mysql.Jenkinsfile
 
@@ -28,20 +36,24 @@ Execute arbitrary SQL scripts on any MySQL compatible database, enabling Jenkins
 
 Export the schema of a MySQL compatible database
 
+## ssh.Jenkinsfile
+
+Load SSH credentials and a known_hosts file in order to execute authenticated SSH commands
+
 ## ssl-certgen.Jenkinsfile
 
 Generate and archive self-signed SSL certs and keys
 
 ## terraform-disabled.Jenkinsfile
 
-Destroy arbitrary Terraform infrastructure using AWS credentials loaded through the Jenkins credential store. Useful to replace the complementary terraform.Jenkinsfile when a Terraform managed environment is being decommissioned.
+Destroy arbitrary Terraform infrastructure using AWS credentials loaded through the Jenkins credential store. Useful to replace the complementary terraform.Jenkinsfile when a Terraform managed environment is being decommissioned
 
 ## terraform-state-destroyer.Jenkinsfile
 
-Allows you to target and destroy the infrastructure contained in arbitrary Terraform state files. Only supports S3 backends in its current state, but can easily be modified.
+Allows you to target and destroy the infrastructure contained in arbitrary Terraform state files. Only supports S3 backends in its current state, but can easily be modified
 
-In order for this Jenkinsfile to work properly you will still need to define a provider and backend in Terraform code before executing.
+In order for this Jenkinsfile to work properly you will still need to define a provider and backend in Terraform code before executing
 
 ## terraform.Jenkinsfile
 
-Apply arbitrary Terraform code using AWS credentials loaded through Jenkins credential store.
+Apply arbitrary Terraform code using AWS credentials loaded through Jenkins credential store
