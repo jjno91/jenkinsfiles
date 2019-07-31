@@ -37,13 +37,14 @@ pipeline {
     }
     stage('Apply') {
       when {
-        expression { env.BRANCH_NAME == 'master' }
+        beforeInput true
+        branch "master"
+      }
+      input {
+        message "Continuing may change or destroy existing infrastructure, be sure to review the plan stage before continuing"
       }
       steps {
         container('this') {
-          timeout(time: 5, unit: 'MINUTES') {
-            input message: 'Continuing may change or destroy existing infrastructure, be sure to review the plan stage before continuing'
-          }
           sh 'terraform apply -auto-approve .tfplan'
         }
       }
