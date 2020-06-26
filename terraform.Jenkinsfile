@@ -32,7 +32,7 @@ pipeline {
           sshagent (credentials: ['id_rsa']) {
             sh 'mkdir -p ~/.ssh && chmod 700 ~/.ssh'
             sh 'ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts'
-            sh 'ssh-keyscan -t rsa bitbucket.com >> ~/.ssh/known_hosts'
+            sh 'for i in 1 2 3 4 5; do ssh-keyscan -t rsa bitbucket.com >> ~/.ssh/known_hosts && break; done'
             sh 'terraform init -backend-config key=${TF_VAR_env} -backend-config ${BACKEND}'
           }
         }
