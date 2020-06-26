@@ -19,7 +19,7 @@ pipeline {
     AWS_ACCESS_KEY_ID     = credentials('aws.id')
     AWS_SECRET_ACCESS_KEY = credentials('aws.key')
     KUBECONFIG            = credentials('kubeconfig')
-    KNOWN_HOSTS           = credentials('known_hosts')
+    BACKEND               = credentials('backend.hcl')
     TF_VAR_env            = "${env.GIT_URL.replaceAll(".*env-", "").replace(".git", "")}"
     TF_IN_AUTOMATION      = true
     TF_INPUT              = false
@@ -30,18 +30,9 @@ pipeline {
       steps {
         container('this') {
           sshagent (credentials: ['id_rsa']) {
-            sh '''
-              # configure ssh for downloading private modules
-              su -c "mkdir -p /root/.ssh" && su -c "chmod 700 /root/.ssh"
-              su -c "cp ${KNOWN_HOSTS} /root/.ssh/known_hosts" && su -c "chmod 644 /root/.ssh/known_hosts"
-
-              # init + backend config
-              terraform init \\
-                -backend-config "bucket=S3_BUCKET" \\
-                -backend-config "region=us-east-1" \\
-                -backend-config "key=${TF_VAR_env}.tfstate" \\
-                -backend-config "encrypt=true"
-            '''
+            sh 'ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts'
+            sh 'ssh-keyscan -t rsa bitbucket.com >> ~/.ssh/known_hosts'
+            sh 'terraform init -backend-config "key=${TF_VAR_env} -backend-config ${BACKEND}'
           }
         }
       }
